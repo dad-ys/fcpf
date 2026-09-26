@@ -310,12 +310,11 @@ const map = L.map('map', { scrollWheelZoom: true }).setView([0.6, 116.3], 7);
 // non-browser/aplikasi pihak ketiga (lihat osm.wiki/Blocked), sehingga sering
 // memblokir saat dibuka dari file lokal atau environment preview. CARTO menyediakan
 // basemap gratis berbasis data OSM yang aman untuk hosting publik seperti GitHub Pages.
-const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+const primaryTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  subdomains: 'abcd',
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
-
+  
 // Fallback ke tile OSM standar jika CARTO tidak dapat diakses (mis. offline/proxy tertentu)
 primaryTiles.on('tileerror', function () {
   if (!map.hasLayer(fallbackTiles)) {
